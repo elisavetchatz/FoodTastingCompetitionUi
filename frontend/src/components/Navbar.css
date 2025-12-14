@@ -1,13 +1,13 @@
-/* Navbar Styles */
+/* Navbar Styles - Christmas Edition */
 
 .navbar {
-  background: #2E2E2E;
-  border-bottom: 1px solid #444;
+  background: linear-gradient(90deg, #c41e3a 0%, #165b33 50%, #c41e3a 100%);
+  border-bottom: 3px solid #ffd700;
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.4), 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .navbar-container {
@@ -41,6 +41,15 @@
   font-size: 1.3rem;
   font-weight: 700;
   color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.navbar-title::before {
+  content: '🎄 ';
+}
+
+.navbar-title::after {
+  content: ' 🎄';
 }
 
 .navbar-menu {
@@ -63,6 +72,7 @@
 }
 
 .navbar-link.active {
-  background: #FF5733;
+  background: linear-gradient(135deg, #c41e3a, #ffd700);
   color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }

@@ -1,9 +1,9 @@
-/* AllVotesPage Styles */
+/* AllVotesPage Styles - Christmas Edition */
 
 .votes-page {
   min-height: calc(100vh - 80px);
   padding: 2rem;
-  background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
+  background: transparent;
 }
 
 .votes-container {
@@ -27,8 +27,13 @@
 
 .votes-header h2 {
   font-size: 2rem;
-  color: #333;
+  color: #c41e3a;
   margin: 0;
+  text-shadow: 1px 1px 2px rgba(255, 215, 0, 0.3);
+}
+
+.votes-header h2::before {
+  content: '🎁 ';
 }
 
 .votes-list {
@@ -39,9 +44,10 @@
 
 .vote-item {
   padding: 1.5rem;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
   border-radius: 12px;
-  border-left: 4px solid #4CAF50;
+  border: 2px solid #ffd700;
+  border-left: 4px solid #165b33;
 }
 
 .player-title {

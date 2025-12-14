@@ -1,0 +1,87 @@
+/* AllVotesPage Styles */
+
+.votes-page {
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
+}
+
+.votes-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.votes-card {
+  background: #FFFFFF;
+  min-height: 400px;
+}
+
+.votes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.votes-header h2 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.votes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.vote-item {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #4CAF50;
+}
+
+.player-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.vote-scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.vote-score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  padding: 0.5rem;
+  background: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.no-votes {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  font-size: 1.5rem;
+  color: #FFFFFF;
+}

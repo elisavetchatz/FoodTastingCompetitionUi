@@ -1,79 +1,206 @@
-# Voting Application
+# 🍽️ Food Tasting Competition - Full Stack Application
 
-This is a **Voting Application** implemented in Python using the `tkinter` library. It provides a graphical user interface (GUI) for participants to vote and view scores in a voting contest.
+> A modern web application for managing food tasting competitions with voting and real-time leaderboards
 
-## Features
+This is a complete rewrite of the original Python tkinter application, now featuring a Node.js/Express backend with a REST API and a React frontend with a modern UI.
 
-- **Participant Voting:** Allows multiple participants to assign scores to various dishes or items.
-- **Dynamic Score Updates:** Displays a real-time leaderboard based on the scores.
-- **Vote Management:** Handles and stores votes for each participant in a text file.
-- **Intuitive Navigation:** Simplifies navigation between input fields for seamless voting.
-- **View Submitted Votes:** Enables viewing of all submitted votes.
+## 🎯 Project Overview
 
-## Getting Started
+This application allows multiple participants to vote on dishes in a food tasting competition. It features:
+
+- **Backend API**: RESTful API built with Node.js and Express
+- **Frontend UI**: Modern React application with responsive design
+- **Real-time Updates**: Live leaderboard with auto-refresh capability
+- **Clean Architecture**: Separated concerns following best practices from XploreBackend and XploreFrontend
+
+## 🏗️ Architecture
+
+```
+FoodTastingCompetitionUi/
+├── backend/               # Node.js/Express REST API
+│   ├── src/
+│   │   ├── controllers/  # Request handlers
+│   │   ├── routes/       # API endpoints
+│   │   ├── middleware/   # Custom middleware
+│   │   ├── config/       # Configuration files
+│   │   └── utils/        # Utility functions
+│   └── package.json
+│
+├── frontend/             # React Application
+│   ├── src/
+│   │   ├── components/  # Reusable components
+│   │   ├── pages/       # Page components
+│   │   ├── api/         # API client
+│   │   └── App.jsx
+│   └── package.json
+│
+├── voting_app.py        # Original Python application (legacy)
+└── README.md
+```
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-Ensure you have Python 3 installed on your system. You can download it from the [official Python website](https://www.python.org/).
+- Node.js (v18.0.0 or higher)
+- npm (v9.0.0 or higher)
 
-### Installation
+### Installation & Running
 
-1. Clone this repository or download the `voting_app.py` file.
-2. Install required libraries (if not already installed):
-   ```bash
-   pip install tk
+#### Easiest Way (Recommended)
 
-### Running the Application
-1. Open a terminal or command prompt.
-2. Navigate to the directory containing voting_app.py.
-3. Run the script: ```python voting_app.py ```
-4. The GUI window for the application will launch.
+```bash
+# Install all dependencies (root, backend, and frontend)
+npm run install-all
 
-### How to Use
-1. Participant Voting:
-
-Each participant votes for the dishes displayed.
-Assign scores by entering values in the input fields next to each dish.
-Press the ```Submit Vote``` button after entering scores.
-2. Real-Time Scores:
-
-The right panel displays the current scores leaderboard.
-Scores are updated dynamically after each vote.
-3. View Votes:
-
-Click the ```View Votes``` button to see all submitted votes.
-Completion:
-
-Once all participants have voted, the system will notify you that voting is complete.
-4. File Structure
-```voting_app.py```: The main application code.
-```votes.txt```: A log file where all votes are stored for record-keeping.
-
-### Customization
-You can customize the application by editing the ```participant_data``` dictionary in the script. This dictionary contains the names of participants and their corresponding dishes or items to vote on.
-
-Example:
-```
-self.participant_data = {
-    "Participant 1": "Dish 1",
-    "Participant 2": "Dish 2",
-    ...
-}
+# Start the application (both backend and frontend)
+npm start
 ```
 
-### Future Improvements
+That's it! The app will open:
+- Backend API: http://localhost:3000
+- Frontend UI: http://localhost:5173
 
-- Add support for exporting scores to a CSV or Excel file.
-- Include participant authentication for enhanced vote security.
-- Improve UI design and add theme customization options.4
-### Screenshots
-Coming soon...
+#### Alternative: Individual Commands
 
-### Contributing
-Feel free to fork this repository and submit pull requests for improvements or new features.
+**Install dependencies:**
+```bash
+npm install          # Install root dependencies
+cd backend && npm install
+cd ../frontend && npm install
+```
 
-### License
-This project is licensed under the MIT License.
+**Start development:**
+```bash
+npm run dev          # Runs both backend and frontend
+# OR run them separately:
+npm run server       # Backend only
+npm run client       # Frontend only
+```
 
-Developed with ❤️ in Python. Specifically designed for a Christmas gathering with the family!
+## 📚 API Endpoints
+
+### Backend REST API
+
+- **GET** `/api/health` - Health check
+- **GET** `/api/participants` - Get all participants and dishes
+- **GET** `/api/scores` - Get current leaderboard
+- **POST** `/api/vote` - Submit a vote
+- **GET** `/api/votes` - Get all submitted votes
+- **POST** `/api/reset` - Reset all data (for testing)
+
+### Example API Usage
+
+```bash
+# Get participants
+curl http://localhost:3000/api/participants
+
+# Submit a vote
+curl -X POST http://localhost:3000/api/vote \
+  -H "Content-Type: application/json" \
+  -d '{"playerNumber": 1, "votes": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5]}'
+
+# Get leaderboard
+curl http://localhost:3000/api/scores
+```
+
+## 🎨 Features
+
+### Backend
+- ✅ RESTful API with Express.js
+- ✅ CORS configuration for cross-origin requests
+- ✅ Request validation and error handling
+- ✅ Rate limiting for API protection
+- ✅ Centralized logging middleware
+- ✅ In-memory data storage (can be extended with MongoDB)
+
+### Frontend
+- ✅ Modern React with functional components and hooks
+- ✅ React Router for navigation
+- ✅ Responsive design for all screen sizes
+- ✅ Real-time score updates with auto-refresh
+- ✅ Clean and intuitive UI
+- ✅ Form validation
+- ✅ Error handling and user feedback
+
+## 🛠️ Tech Stack
+
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Security**: Helmet.js, CORS, Rate Limiting
+- **Architecture**: MVC pattern with controllers and routes
+
+### Frontend
+- **Framework**: React 18
+- **Build Tool**: Vite
+- **Routing**: React Router 6
+- **HTTP Client**: Axios
+- **Styling**: CSS3 with modern gradients and animations
+
+## 📖 Comparison with Original App
+
+| Feature | Original (Python/tkinter) | New (Node.js/React) |
+|---------|---------------------------|---------------------|
+| Architecture | Monolithic desktop app | Separated backend/frontend |
+| UI | Desktop GUI (tkinter) | Modern web UI |
+| Data Storage | Text file (votes.txt) | In-memory (extensible) |
+| Multi-user | Single device | Web-based, multiple devices |
+| Updates | Manual refresh | Real-time with auto-refresh |
+| Platform | Desktop only | Any device with browser |
+
+## 🚀 Deployment to Render
+
+This project is configured for easy deployment to [Render](https://render.com):
+
+### Automatic Deployment
+
+1. Push your code to GitHub
+2. Connect your GitHub repo to Render
+3. Render will automatically detect `render.yaml`
+4. Your app will be deployed!
+
+### Manual Deployment
+
+1. Create a new Web Service on Render
+2. Connect your repository
+3. Set build command: `npm run render-build`
+4. Set start command: `npm run render-start`
+5. Add environment variables:
+   - `NODE_ENV=production`
+   - `ALLOWED_ORIGINS=https://your-app.onrender.com`
+
+The backend will serve the built frontend files automatically in production.
+
+## 🎯 Future Improvements
+
+- [ ] Add MongoDB database for persistent storage
+- [ ] Add user authentication
+- [ ] Add WebSocket support for real-time updates
+- [ ] Add vote editing/deletion functionality
+- [ ] Add admin dashboard
+- [ ] Add vote statistics and analytics
+- [ ] Add export to CSV/Excel
+- [ ] Add Docker containerization
+- [ ] Add unit and integration tests
+
+## 🌟 Inspired By
+
+This project was inspired by and follows architectural patterns from:
+- [XploreFrontend](https://github.com/mileoudi/XploreFrontend) - React frontend architecture
+- [XploreBackend](https://github.com/mileoudi/XploreBackend) - Node.js/Express backend structure
+
+
+
+---
+
+## 📝 License
+
+MIT
+
+## 👤 Author
+
+Developed with ❤️ for the family Christmas gathering!
+
+**Happy Voting! 🎉**
 

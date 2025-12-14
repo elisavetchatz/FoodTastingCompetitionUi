@@ -1,0 +1,165 @@
+/* VotingPage Styles */
+
+.voting-page {
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.voting-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.voting-card {
+  background: #FFFFFF;
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.player-header h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 0;
+}
+
+.players-remaining {
+  font-size: 0.9rem;
+  color: #666;
+  background: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #c62828;
+}
+
+.voting-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dish-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dish-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.dish-label {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.25rem;
+}
+
+.participant-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.dish-name {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+.score-input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.score-input:focus {
+  outline: none;
+  border-color: #FF5733;
+}
+
+.info-card {
+  background: #FFFFFF;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.info-card h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.instructions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.instructions li {
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #666;
+}
+
+.instructions li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  font-size: 1.5rem;
+  color: #FFFFFF;
+}
+
+@media (max-width: 968px) {
+  .voting-container {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    position: relative;
+    top: 0;
+  }
+}

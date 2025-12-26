@@ -26,29 +26,25 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #c41e3a 0%, #a01729 100%);
+  background: #333;
   color: white;
-  box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
-  border: 2px solid #ffd700;
+  border: 1px solid #333;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, #a01729 0%, #c41e3a 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.5), 0 0 25px rgba(255, 215, 0, 0.3);
+  background: #555;
+  border-color: #555;
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, #165b33 0%, #0d4023 100%);
+  background: #666;
   color: white;
-  box-shadow: 0 0 15px rgba(22, 91, 51, 0.4);
-  border: 2px solid #ffd700;
+  border: 1px solid #666;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: linear-gradient(135deg, #0d4023 0%, #165b33 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(22, 91, 51, 0.5), 0 0 25px rgba(255, 215, 0, 0.3);
+  background: #888;
+  border-color: #888;
 }
 
 .btn-danger {

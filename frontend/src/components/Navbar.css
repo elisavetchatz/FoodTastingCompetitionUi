@@ -1,13 +1,13 @@
-/* Navbar Styles - Christmas Edition */
+/* Navbar Styles */
 
 .navbar {
-  background: linear-gradient(90deg, #c41e3a 0%, #165b33 50%, #c41e3a 100%);
-  border-bottom: 3px solid #ffd700;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-container {
@@ -24,12 +24,7 @@
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  color: #FFFFFF;
-  transition: transform 0.2s ease;
-}
-
-.navbar-brand:hover {
-  transform: scale(1.05);
+  color: #333;
 }
 
 .navbar-logo {
@@ -37,19 +32,9 @@
 }
 
 .navbar-title {
-  font-family: 'Ubuntu', sans-serif;
   font-size: 1.3rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
-}
-
-.navbar-title::before {
-  content: '🎄 ';
-}
-
-.navbar-title::after {
-  content: ' 🎄';
+  font-weight: 600;
+  color: #333;
 }
 
 .navbar-menu {
@@ -59,20 +44,20 @@
 }
 
 .navbar-link {
-  color: #FFFFFF;
+  color: #666;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 .navbar-link:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #f5f5f5;
+  color: #333;
 }
 
 .navbar-link.active {
-  background: linear-gradient(135deg, #c41e3a, #ffd700);
-  color: #FFFFFF;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  background: #333;
+  color: #fff;
 }

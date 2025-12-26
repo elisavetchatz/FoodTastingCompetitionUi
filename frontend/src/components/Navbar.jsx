@@ -25,6 +25,12 @@ const Navbar = () => {
             Vote
           </Link>
           <Link
+            to="/submit"
+            className={`navbar-link ${location.pathname === '/submit' ? 'active' : ''}`}
+          >
+            Submit Food
+          </Link>
+          <Link
             to="/scores"
             className={`navbar-link ${location.pathname === '/scores' ? 'active' : ''}`}
           >

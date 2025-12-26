@@ -138,6 +138,42 @@ export const getAllVotes = (req, res) => {
 };
 
 /**
+ * Submit a new food item
+ * POST /api/submit-food
+ */
+export const submitFood = (req, res) => {
+  try {
+    const { participantName, dishName } = req.body;
+
+    // Validation
+    if (!participantName || !dishName) {
+      return errorResponse(res, 'Participant name and dish name are required', HTTP_STATUS.BAD_REQUEST);
+    }
+
+    // Check if participant already exists
+    if (participantData[participantName]) {
+      return errorResponse(res, 'This participant name already exists. Please use a different name.', HTTP_STATUS.BAD_REQUEST);
+    }
+
+    // Add new participant
+    participantData[participantName] = dishName;
+
+    // Initialize score for new participant
+    const key = `${participantName} - ${dishName}`;
+    scores[key] = 0;
+
+    return successResponse(
+      res,
+      { participantName, dishName },
+      'Food submitted successfully',
+      HTTP_STATUS.CREATED
+    );
+  } catch (error) {
+    return errorResponse(res, ERROR_MESSAGES.SERVER_ERROR, HTTP_STATUS.INTERNAL_SERVER_ERROR);
+  }
+};
+
+/**
  * Reset all data (for testing)
  * POST /api/reset
  */
@@ -168,5 +204,6 @@ export default {
   getScores,
   submitVote,
   getAllVotes,
+  submitFood,
   resetData
 };

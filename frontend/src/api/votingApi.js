@@ -54,6 +54,13 @@ export const getAllVotes = async () => {
 };
 
 /**
+ * Submit a new food item
+ */
+export const submitFood = async (participantName, dishName) => {
+  return await apiClient.post('/submit-food', { participantName, dishName });
+};
+
+/**
  * Reset all data
  */
 export const resetData = async () => {
@@ -65,5 +72,6 @@ export default {
   getScores,
   submitVote,
   getAllVotes,
+  submitFood,
   resetData
 };

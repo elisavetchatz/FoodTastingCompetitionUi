@@ -16,7 +16,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
  */
 const startServer = () => {
   try {
-    const server = app.listen(PORT, () => {
+    const server = app.listen(PORT, '0.0.0.0', () => {
       console.log('');
       console.log('╔═══════════════════════════════════════════════════╗');
       console.log('║                                                   ║');
@@ -26,8 +26,9 @@ const startServer = () => {
       console.log('');
       console.log(`📍 Environment: ${NODE_ENV}`);
       console.log(`🌐 Server running on: http://localhost:${PORT}`);
-      console.log(`🔧 API Base URL: http://localhost:${PORT}/api`);
-      console.log(`💚 Health Check: http://localhost:${PORT}/api/health`);
+      console.log(`📱 Network access: http://192.168.139.130:${PORT}`);
+      console.log(`🔧 API Base URL: http://192.168.139.130:${PORT}/api`);
+      console.log(`💚 Health Check: http://192.168.139.130:${PORT}/api/health`);
       console.log('');
       console.log('📚 Available Routes:');
       console.log('   GET    /api/health');

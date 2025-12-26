@@ -26,7 +26,9 @@ const corsOptions = {
   origin: process.env.ALLOWED_ORIGINS?.split(',') || [
     'http://localhost:5173',
     'http://localhost:3001',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://192.168.139.130:5173',
+    /^http:\/\/192\.168\.\d{1,3}\.\d{1,3}:\d+$/  // Allow any local network IP
   ],
   credentials: true,
   optionsSuccessStatus: 200

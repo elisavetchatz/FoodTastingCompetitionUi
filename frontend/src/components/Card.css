@@ -46,3 +46,14 @@
 .card-content {
   color: var(--color-text-light);
 }
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+}

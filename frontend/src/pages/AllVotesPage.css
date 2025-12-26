@@ -105,3 +105,37 @@
   color: var(--color-text);
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .votes-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .votes-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .votes-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .vote-item {
+    padding: 1.25rem;
+  }
+
+  .player-title {
+    font-size: 1.2rem;
+  }
+
+  .vote-scores {
+    gap: 0.625rem;
+  }
+
+  .vote-score {
+    min-width: 48px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+}

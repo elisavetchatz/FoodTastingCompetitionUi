@@ -5,36 +5,24 @@
 
 import { successResponse, errorResponse } from '../utils/responses.js';
 import { SUCCESS_MESSAGES, ERROR_MESSAGES, HTTP_STATUS } from '../config/constants.js';
+import { loadData, saveData } from '../utils/storage.js';
 
-// In-memory data storage (in a real app, this would be a database)
-const participantData = {
-  "Καλλίτσα": "Μακαρονόπιτα Κ...αλλιώς",
-  "Καλλίτσα2": "Φτερουγίσματα με Κασέρια",
-  "Μαρία Μικρή": "Σαλάτα της Χοληστερίνης",
-  "Μαρία Μικρή2": "Ρολό Κιμά-> Απόπειρα 2",
-  "Άρης": "Sevasto...bai",
-  "Κοσμάς": "brownies του Κόσμου",
-  "Σοφούλα": "Κοτόπουλο Γεμιστό",
-  "Χριστίνα Χ.": "Του κολοκυθιού τα εννιάμερα",
-  "Σλβάνα": "Σοφρίτο αλά... Σεβαστιώτα",
-  "Γιάννης και Δημήτρης": "Μοσχάρι Κρασάτο με Μεθυσμένες Πατάτες",
-  "Χριστίνα Β": "Ψαρονεύρι με ρύζι",
-  "Μαρία Όμορφη": "Banana CAKE",
-  "Μαρία Όμορφη και Σταυρούλα": "Φωλίτσες",
-  "Πάολα": "Σνιτσελόνια με Ντιπ",
-  "Ελένη": "Μπισκοτίνια με Εσάνς... Μελομακάρονο"
-};
-
-let scores = {};
-let playerVotes = {};
-let currentPlayer = 1;
+// Load data from file on startup
+const initialData = loadData();
+let participantData = initialData.participantData;
+let scores = initialData.scores;
+let playerVotes = initialData.playerVotes;
+let currentPlayer = initialData.currentPlayer;
 const maxPlayers = 20;
 
-// Initialize scores
-Object.keys(participantData).forEach(name => {
-  const key = `${name} - ${participantData[name]}`;
-  scores[key] = 0;
-});
+// Initialize scores if empty
+if (Object.keys(scores).length === 0) {
+  Object.keys(participantData).forEach(name => {
+    const key = `${name} - ${participantData[name]}`;
+    scores[key] = 0;
+  });
+  saveData({ participantData, scores, playerVotes, currentPlayer });
+}
 
 /**
  * Get all participants
@@ -109,6 +97,9 @@ export const submitVote = (req, res) => {
       currentPlayer++;
     }
 
+    // Save data to file
+    saveData({ participantData, scores, playerVotes, currentPlayer });
+
     return successResponse(
       res,
       { playerNumber, votesRemaining: maxPlayers - Object.keys(playerVotes).length },
@@ -159,6 +150,9 @@ export const submitFood = (req, res) => {
     participantData[participantName] = dishName;
 
     // Initialize score for new participant
+    // Save data to file
+    saveData({ participantData, scores, playerVotes, currentPlayer });
+
     const key = `${participantName} - ${dishName}`;
     scores[key] = 0;
 
@@ -182,7 +176,10 @@ export const resetData = (req, res) => {
     scores = {};
     playerVotes = {};
     currentPlayer = 1;
+// Save data to file
+    saveData({ participantData, scores, playerVotes, currentPlayer });
 
+    
     Object.keys(participantData).forEach(name => {
       const key = `${name} - ${participantData[name]}`;
       scores[key] = 0;

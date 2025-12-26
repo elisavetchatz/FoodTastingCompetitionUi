@@ -42,8 +42,8 @@ export const getScores = async () => {
 /**
  * Submit a vote
  */
-export const submitVote = async (playerNumber, votes) => {
-  return await apiClient.post('/vote', { playerNumber, votes });
+export const submitVote = async (playerNumber, voterName, votes) => {
+  return await apiClient.post('/vote', { playerNumber, voterName, votes });
 };
 
 /**

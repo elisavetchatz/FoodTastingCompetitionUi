@@ -35,7 +35,7 @@ const AllVotesPage = () => {
       <div className="votes-container">
         <Card className="votes-card">
           <div className="votes-header">
-            <h2>📋 All Submitted Votes</h2>
+            <h2>All Submitted Votes</h2>
             <Button onClick={fetchVotes} variant="secondary">
               Refresh
             </Button>
@@ -47,18 +47,24 @@ const AllVotesPage = () => {
             </div>
           ) : (
             <div className="votes-list">
-              {Object.entries(votes).map(([player, playerVotes]) => (
-                <div key={player} className="vote-item">
-                  <h3 className="player-title">Player {player}</h3>
-                  <div className="vote-scores">
-                    {playerVotes.map((score, index) => (
-                      <span key={index} className="vote-score">
-                        {score}
-                      </span>
-                    ))}
+              {Object.entries(votes).map(([player, voteData]) => {
+                // Handle both old format (array) and new format (object with voterName)
+                const voterName = voteData.voterName || `Player ${player}`;
+                const votesArray = voteData.votes || voteData;
+                
+                return (
+                  <div key={player} className="vote-item">
+                    <h3 className="player-title">{voterName}</h3>
+                    <div className="vote-scores">
+                      {votesArray.map((score, index) => (
+                        <span key={index} className="vote-score">
+                          {score}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </Card>

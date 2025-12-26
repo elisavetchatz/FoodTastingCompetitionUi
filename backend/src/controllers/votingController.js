@@ -68,23 +68,31 @@ export const getScores = (req, res) => {
  */
 export const submitVote = (req, res) => {
   try {
-    const { playerNumber, votes } = req.body;
+    const { playerNumber, voterName, votes } = req.body;
 
     // Validation
-    if (!playerNumber || !votes || !Array.isArray(votes)) {
+    if (!playerNumber || !voterName || !votes || !Array.isArray(votes)) {
       return errorResponse(res, ERROR_MESSAGES.INVALID_VOTE_DATA, HTTP_STATUS.BAD_REQUEST);
     }
 
-    if (playerVotes[playerNumber]) {
-      return errorResponse(res, ERROR_MESSAGES.VOTE_ALREADY_SUBMITTED, HTTP_STATUS.BAD_REQUEST);
+    // Check if this voter name has already voted
+    const existingVote = Object.values(playerVotes).find(
+      vote => vote.voterName && vote.voterName.toLowerCase() === voterName.toLowerCase()
+    );
+    
+    if (existingVote) {
+      return errorResponse(res, `${voterName} has already voted`, HTTP_STATUS.BAD_REQUEST);
     }
 
     if (votes.length !== Object.keys(participantData).length) {
       return errorResponse(res, 'Invalid number of votes', HTTP_STATUS.BAD_REQUEST);
     }
 
-    // Store the vote
-    playerVotes[playerNumber] = votes;
+    // Store the vote with voter name
+    playerVotes[playerNumber] = {
+      voterName: voterName,
+      votes: votes
+    };
 
     // Update scores
     Object.keys(participantData).forEach((name, index) => {
@@ -102,7 +110,7 @@ export const submitVote = (req, res) => {
 
     return successResponse(
       res,
-      { playerNumber, votesRemaining: maxPlayers - Object.keys(playerVotes).length },
+      { playerNumber, voterName, votesRemaining: maxPlayers - Object.keys(playerVotes).length },
       SUCCESS_MESSAGES.VOTE_SUBMITTED,
       HTTP_STATUS.CREATED
     );

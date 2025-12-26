@@ -13,6 +13,7 @@ const VotingPage = () => {
   const [participants, setParticipants] = useState({});
   const [maxPlayers, setMaxPlayers] = useState(20);
   const [currentPlayer, setCurrentPlayer] = useState(1);
+  const [voterName, setVoterName] = useState('');
   const [votes, setVotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -44,6 +45,12 @@ const VotingPage = () => {
     e.preventDefault();
     setError('');
 
+    // Validate voter name
+    if (!voterName.trim()) {
+      setError('Please enter your name');
+      return;
+    }
+
     // Validate all fields are filled
     const numericVotes = votes.map(v => parseInt(v));
     if (numericVotes.some(v => isNaN(v) || v === '')) {
@@ -52,9 +59,10 @@ const VotingPage = () => {
     }
 
     try {
-      await submitVote(currentPlayer, numericVotes);
-      alert(`Vote submitted for Player ${currentPlayer}!`);
+      await submitVote(currentPlayer, voterName.trim(), numericVotes);
+      alert(`Vote submitted for ${voterName}!`);
       setCurrentPlayer(prev => prev + 1);
+      setVoterName('');
       setVotes(new Array(Object.keys(participants).length).fill(''));
 
       if (currentPlayer >= maxPlayers) {
@@ -88,6 +96,19 @@ const VotingPage = () => {
           {error && <div className="error-message">{error}</div>}
 
           <form onSubmit={handleSubmit} className="voting-form">
+            <div className="form-group">
+              <label htmlFor="voterName">Your Name</label>
+              <input
+                type="text"
+                id="voterName"
+                className="voter-name-input"
+                value={voterName}
+                onChange={(e) => setVoterName(e.target.value)}
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
             <div className="dishes-list">
               {Object.entries(participants).map(([name, dish], index) => (
                 <div key={index} className="dish-item">

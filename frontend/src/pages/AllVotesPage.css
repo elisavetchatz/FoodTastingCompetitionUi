@@ -1,9 +1,8 @@
-/* AllVotesPage Styles - Christmas Edition */
+/* AllVotesPage Styles - Modern */
 
 .votes-page {
   min-height: calc(100vh - 80px);
-  padding: 2rem;
-  background: transparent;
+  padding: 2.5rem 2rem;
 }
 
 .votes-container {
@@ -12,7 +11,7 @@
 }
 
 .votes-card {
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.95);
   min-height: 400px;
 }
 
@@ -20,62 +19,81 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-border);
 }
 
 .votes-header h2 {
-  font-size: 2rem;
-  color: #2d5f2e;
+  font-size: 2.25rem;
   margin: 0;
+  background: linear-gradient(135deg, #2d5f2e 0%, #3d7f3e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .votes-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .vote-item {
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 4px;
-  border: 1px solid #e8e8e8;
-  border-left: 3px solid #2d5f2e;
+  padding: 1.75rem;
+  background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vote-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
 }
 
 .player-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 1rem 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.015em;
 }
 
 .vote-scores {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.875rem;
 }
 
 .vote-score {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 50px;
-  padding: 0.5rem;
-  background: #8b3a3a;
+  min-width: 56px;
+  padding: 0.625rem 0.875rem;
+  background: linear-gradient(135deg, #8b3a3a 0%, #a04a4a 100%);
   color: white;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.vote-score:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
 }
 
 .no-votes {
   text-align: center;
-  padding: 3rem;
-  color: #666;
-  font-size: 1.2rem;
+  padding: 4rem 2rem;
+  color: var(--color-text-light);
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .loading {
@@ -84,5 +102,6 @@
   align-items: center;
   min-height: calc(100vh - 80px);
   font-size: 1.5rem;
-  color: #FFFFFF;
+  color: var(--color-text);
+  font-weight: 600;
 }

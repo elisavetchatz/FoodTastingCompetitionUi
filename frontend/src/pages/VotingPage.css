@@ -172,6 +172,9 @@
   content: '✓';
   position: absolute;
   left: 0;
+  color: #2d5f2e;
+  font-weight: bold;
+};
   color: #4CAF50;
   font-weight: bold;
 }

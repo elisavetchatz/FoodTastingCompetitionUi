@@ -26,25 +26,25 @@
 }
 
 .btn-primary {
-  background: #333;
+  background: #2d5f2e;
   color: white;
-  border: 1px solid #333;
+  border: 1px solid #2d5f2e;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #555;
-  border-color: #555;
+  background: #3d7f3e;
+  border-color: #3d7f3e;
 }
 
 .btn-secondary {
-  background: #666;
+  background: #8b3a3a;
   color: white;
-  border: 1px solid #666;
+  border: 1px solid #8b3a3a;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: #888;
-  border-color: #888;
+  background: #a04a4a;
+  border-color: #a04a4a;
 }
 
 .btn-danger {

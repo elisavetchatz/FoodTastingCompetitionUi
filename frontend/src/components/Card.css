@@ -1,16 +1,18 @@
-/* Card Styles */
+/* Card Styles - Simple Christmas */
 
 .card {
   background: #fff;
-  border: 1px solid #ddd;
+  border: 2px solid #e8e8e8;
+  border-top: 3px solid #c4a747;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(45, 95, 46, 0.1);
+  border-top-color: #2d5f2e;
 }
 
 .card-title {

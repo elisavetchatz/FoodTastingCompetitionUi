@@ -5,6 +5,7 @@
 
 import express from 'express';
 import votingRoutes from './votingRoutes.js';
+import talentRoutes from './talentRoutes.js';
 
 const router = express.Router();
 
@@ -20,5 +21,8 @@ router.get('/health', (req, res) => {
 
 // Mount voting routes
 router.use('/', votingRoutes);
+
+// Mount talent routes
+router.use('/talent', talentRoutes);
 
 export default router;

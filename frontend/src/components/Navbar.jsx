@@ -22,7 +22,7 @@ const Navbar = () => {
             to="/"
             className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
           >
-            Vote
+            Vote Food
           </Link>
           <Link
             to="/submit"
@@ -34,13 +34,26 @@ const Navbar = () => {
             to="/scores"
             className={`navbar-link ${location.pathname === '/scores' ? 'active' : ''}`}
           >
-            Leaderboard
+            Food Scores
           </Link>
           <Link
             to="/votes"
             className={`navbar-link ${location.pathname === '/votes' ? 'active' : ''}`}
           >
             All Votes
+          </Link>
+          <div className="navbar-divider"></div>
+          <Link
+            to="/talent-vote"
+            className={`navbar-link ${location.pathname === '/talent-vote' ? 'active' : ''}`}
+          >
+            🌟 Talent Vote
+          </Link>
+          <Link
+            to="/talent-scores"
+            className={`navbar-link ${location.pathname === '/talent-scores' ? 'active' : ''}`}
+          >
+            🏆 Talent Scores
           </Link>
         </div>
       </div>

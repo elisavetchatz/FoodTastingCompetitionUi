@@ -158,11 +158,11 @@ export const submitFood = (req, res) => {
     participantData[participantName] = dishName;
 
     // Initialize score for new participant
-    // Save data to file
-    saveData({ participantData, scores, playerVotes, currentPlayer });
-
     const key = `${participantName} - ${dishName}`;
     scores[key] = 0;
+
+    // Save data to file
+    saveData({ participantData, scores, playerVotes, currentPlayer });
 
     return successResponse(
       res,

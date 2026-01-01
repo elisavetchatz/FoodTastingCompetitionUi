@@ -94,6 +94,13 @@
   width: 0;
 }
 
+.navbar-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 0.5rem;
+}
+
 @media (max-width: 768px) {
   .navbar-container {
     padding: 0 1rem;
@@ -109,10 +116,15 @@
 
   .navbar-menu {
     gap: 0.25rem;
+    flex-wrap: wrap;
   }
 
   .navbar-link {
     padding: 0.5rem 0.75rem;
     font-size: 0.85rem;
+  }
+
+  .navbar-divider {
+    display: none;
   }
 }

@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename);
 // Data directory path
 const DATA_DIR = path.join(__dirname, '../../data');
 const DATA_FILE = path.join(DATA_DIR, 'competition-data.json');
+const TALENT_DATA_FILE = path.join(DATA_DIR, 'talent-data.json');
 
 /**
  * Ensure data directory exists
@@ -37,23 +38,13 @@ export const loadData = () => {
     
     // Return default data if file doesn't exist
     return {
-      participantData: {
-        "Καλλίτσα": "Μακαρονόπιτα Κ...αλλιώς",
-        "Καλλίτσα2": "Φτερουγίσματα με Κασέρια",
-        "Μαρία Μικρή": "Σαλάτα της Χοληστερίνης",
-        "Μαρία Μικρή2": "Ρολό Κιμά-> Απόπειρα 2",
-        "Άρης": "Sevasto...bai",
-        "Κοσμάς": "brownies του Κόσμου",
-        "Σοφούλα": "Κοτόπουλο Γεμιστό",
-        "Χριστίνα Χ.": "Του κολοκυθιού τα εννιάμερα",
-        "Σλβάνα": "Σοφρίτο αλά... Σεβαστιώτα",
-        "Γιάννης και Δημήτρης": "Μοσχάρι Κρασάτο με Μεθυσμένες Πατάτες",
-        "Χριστίνα Β": "Ψαρονεύρι με ρύζι",
-        "Μαρία Όμορφη": "Banana CAKE",
-        "Μαρία Όμορφη και Σταυρούλα": "Φωλίτσες",
-        "Πάολα": "Σνιτσελόνια με Ντιπ",
-        "Ελένη": "Μπισκοτίνια με Εσάνς... Μελομακάρονο"
-      },
+    "participantData": {
+      "Χρστίνα": "πατατό... Τάρταρα",
+      "Άρης": "Ροδόλευκος Πειρασμός",
+      "Σιλβάνα": "Τηγανισμανακατέματα ή... stir-fry",
+      "Άρης 2": "ΟΠΕΚΕΠΕδάκια",
+      "Καλλίτσα": "Ψαρονεύρι με santa baby potatoes"
+    },
       scores: {},
       playerVotes: {},
       currentPlayer: 1
@@ -74,6 +65,59 @@ export const saveData = (data) => {
     return true;
   } catch (error) {
     console.error('Error saving data:', error);
+    return false;
+  }
+};
+
+/**
+ * Load talent data from file
+ */
+export const loadTalentData = () => {
+  try {
+    ensureDataDir();
+    
+    if (fs.existsSync(TALENT_DATA_FILE)) {
+      const fileContent = fs.readFileSync(TALENT_DATA_FILE, 'utf8');
+      return JSON.parse(fileContent);
+    }
+    
+    // Return default data if file doesn't exist
+    return {
+      athleticPerformance: {
+        participantData: {},
+        scores: {},
+        playerVotes: {},
+        currentPlayer: 1
+      },
+      danceMusicalPerformance: {
+        participantData: {},
+        scores: {},
+        playerVotes: {},
+        currentPlayer: 1
+      },
+      theatricalPerformance: {
+        participantData: {},
+        scores: {},
+        playerVotes: {},
+        currentPlayer: 1
+      }
+    };
+  } catch (error) {
+    console.error('Error loading talent data:', error);
+    return null;
+  }
+};
+
+/**
+ * Save talent data to file
+ */
+export const saveTalentData = (data) => {
+  try {
+    ensureDataDir();
+    fs.writeFileSync(TALENT_DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
+    return true;
+  } catch (error) {
+    console.error('Error saving talent data:', error);
     return false;
   }
 };

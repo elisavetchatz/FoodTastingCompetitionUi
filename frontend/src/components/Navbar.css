@@ -50,17 +50,19 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 .navbar-link {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-weight: 600;
-  padding: 0.625rem 1.25rem;
+  padding: 0.5rem 0.9rem;
   border-radius: var(--radius-md);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   position: relative;
+  white-space: nowrap;
 }
 
 .navbar-link::before {

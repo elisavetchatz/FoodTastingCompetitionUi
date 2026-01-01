@@ -184,8 +184,8 @@ const TalentVotingPage = () => {
             {participantsList.map(([name, performance], index) => (
               <Card key={name} className="participant-card">
                 <div className="participant-info">
-                  <h3>{name}</h3>
-                  <p className="performance-name">{performance}</p>
+                  <h3 className="performance-name">{performance}</h3>
+                  <p className="participant-name">{name}</p>
                 </div>
                 <div className="vote-input">
                   <label htmlFor={`vote-${index}`}>Score (0-10):</label>

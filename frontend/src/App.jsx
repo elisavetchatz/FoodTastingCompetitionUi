@@ -5,7 +5,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components';
-import { VotingPage, ScoresPage, AllVotesPage, SubmitFoodPage, TalentVotingPage, TalentScoresPage } from './pages';
+import { VotingPage, ScoresPage, AllVotesPage, SubmitFoodPage, TalentVotingPage, TalentScoresPage, SubmitTalentPage } from './pages';
 import './App.css';
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
             <Route path="/votes" element={<AllVotesPage />} />
             <Route path="/talent-vote" element={<TalentVotingPage />} />
             <Route path="/talent-scores" element={<TalentScoresPage />} />
+            <Route path="/submit-talent" element={<SubmitTalentPage />} />
           </Routes>
         </main>
       </div>
